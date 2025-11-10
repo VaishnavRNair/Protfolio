@@ -76,6 +76,9 @@
     width:240px;height:240px;border-radius:50%;position:relative;
     display:flex;align-items:center;justify-content:center;
     transition:transform .45s;
+    transform-origin:center;
+    will-change:transform;
+    animation:float 6s ease-in-out infinite;
   }
   .photo img{
     width:210px;height:210px;object-fit:cover;border-radius:50%;
@@ -90,6 +93,13 @@
     filter:blur(10px);pointer-events:none;
   }
 
+  /* float animation */
+  @keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+  }
+
   /* ===== About ===== */
   .about .wrap{display:flex;gap:30px;align-items:flex-start;flex-wrap:wrap;justify-content:center}
   .about-left{flex:1 1 520px;color:var(--muted)}
@@ -99,7 +109,8 @@
 
   /* ===== Skills: icons + animated bars ===== */
   .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;align-items:start}
-  .skill-card{background:var(--panel);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);display:flex;gap:12px;align-items:center}
+  .skill-card{background:var(--panel);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);display:flex;gap:12px;align-items:center;transition:transform .28s ease, box-shadow .28s;}
+  .skill-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(2,6,12,0.6);}
   .skill-icon{
     width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;
     background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
@@ -121,7 +132,8 @@
     display:flex;flex-direction:column;
   }
   .project:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(2,6,12,0.6)}
-  .project-thumb{height:160px;background-size:cover;background-position:center;filter:contrast(1) saturate(1);}
+  .project-thumb{height:160px;background-size:cover;background-position:center;filter:contrast(1) saturate(1);transition:transform .5s ease, filter .4s;}
+  .project:hover .project-thumb{transform:scale(1.04) translateY(-6px);filter:contrast(1.05) saturate(1.05);}
   .project-body{padding:14px}
   .project-body h3{margin:0 0 8px;color:var(--accent)}
   .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
@@ -142,6 +154,9 @@
   @keyframes fillBar { from{ transform:translateX(-100%);} to{transform:translateX(0);} }
   @keyframes fadeUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
   .reveal{opacity:0;transform:translateY(20px);animation:fadeUp .7s ease forwards}
+
+  /* reveal stagger helper */
+  .reveal[data-delay] { animation-delay: var(--delay, 0s); }
 
   /* ===== Responsive ===== */
   @media (max-width:900px){
@@ -176,7 +191,7 @@
 
 <!-- HOME -->
 <section id="home" class="container home">
-  <div class="home-left reveal" style="animation-delay:.1s">
+  <div class="home-left reveal" style="--delay:.1s" data-delay>
     <div class="intro">Hello, It's Me</div>
     <div class="name">Vaishnav R Nair</div>
     <div class="role">Full-Stack Developer</div>
@@ -194,12 +209,12 @@
       <a href="https://github.com/VaishnavRNair" target="_blank"><i class="fa-brands fa-github"></i></a>
       <a href="https://www.linkedin.com/in/vaishnav-r-nair10/" target="_blank"><i class="fab fa-linkedin"></i></a>
       <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vaishnavrnair1012@gmail.com" target="_blank">
-  <i class="fa-solid fa-envelope"></i>
-</a>
+        <i class="fa-solid fa-envelope"></i>
+      </a>
     </div>
   </div>
 
-  <div class="home-right reveal" style="animation-delay:.2s">
+  <div class="home-right reveal" style="--delay:.2s" data-delay>
     <div class="photo">
       <img src="Btechcertificatepassportsizephoto.jpg" alt="Vaishnav photo">
     </div>
@@ -207,7 +222,7 @@
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="container about reveal" style="animation-delay:.25s">
+<section id="about" class="container about reveal" style="--delay:.25s" data-delay>
   <div class="section-title">About <span>Me</span></div>
   <div class="section-sub">Full-Stack Developer</div>
 
@@ -234,14 +249,14 @@
 </section>
 
 <!-- SKILLS -->
-<section id="skills" class="container reveal" style="animation-delay:.3s">
+<section id="skills" class="container reveal" style="--delay:.3s" data-delay>
   <div class="section-sub"> </div>
   <div class="section-title">Skills</div>
   <div class="section-sub">Results-driven developer skilled in </div>
 
   <div class="skills-grid" style="margin-top:20px">
     <!-- Java -->
-    <div class="skill-card">
+    <div class="skill-card reveal" style="--delay:.35s" data-delay>
       <div class="skill-icon"><i class="fa-brands fa-java"></i></div>
       <div class="skill-info">
         <h4>Java</h4>
@@ -251,7 +266,7 @@
     </div>
 
     <!-- MySQL -->
-    <div class="skill-card">
+    <div class="skill-card reveal" style="--delay:.38s" data-delay>
       <div class="skill-icon"><i class="fa-solid fa-database"></i></div>
       <div class="skill-info">
         <h4>MySQL</h4>
@@ -261,7 +276,7 @@
     </div>
 
     <!-- Web -->
-    <div class="skill-card">
+    <div class="skill-card reveal" style="--delay:.41s" data-delay>
       <div class="skill-icon"><i class="fa-brands fa-html5"></i></div>
       <div class="skill-info">
         <h4>HTML / CSS / JS</h4>
@@ -271,7 +286,7 @@
     </div>
 
     <!-- React -->
-    <div class="skill-card">
+    <div class="skill-card reveal" style="--delay:.44s" data-delay>
       <div class="skill-icon"><i class="fa-brands fa-react"></i></div>
       <div class="skill-info">
         <h4>React.js</h4>
@@ -281,7 +296,7 @@
     </div>
 
     <!-- Django -->
-    <div class="skill-card">
+    <div class="skill-card reveal" style="--delay:.47s" data-delay>
       <div class="skill-icon"><i class="fa-brands fa-python"></i></div>
       <div class="skill-info">
         <h4>Python / Django</h4>
@@ -291,7 +306,7 @@
     </div>
 
     <!-- Testing -->
-    <div class="skill-card">
+    <div class="skill-card reveal" style="--delay:.5s" data-delay>
       <div class="skill-icon"><i class="fa-solid fa-vial"></i></div>
       <div class="skill-info">
         <h4>Manual Testing</h4>
@@ -303,13 +318,13 @@
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" class="container reveal" style="animation-delay:.35s">
+<section id="projects" class="container reveal" style="--delay:.35s" data-delay>
   <div class="section-sub"> </div>
   <div class="section-title">Projects</div>
   <div class="section-sub">From concept to creation</div>
 
   <div class="projects-grid" style="margin-top:20px">
-    <div class="project">
+    <div class="project reveal" style="--delay:.38s" data-delay>
       <div class="project-thumb" style="background-image:url('speech.jpeg')"></div>
       <div class="project-body">
         <h3>Speech Recognition for Children</h3>
@@ -320,7 +335,7 @@
       </div>
     </div>
 
-    <div class="project">
+    <div class="project reveal" style="--delay:.41s" data-delay>
       <div class="project-thumb" style="background-image:url('fuel.jpg')"></div>
       <div class="project-body">
         <h3>Fuel Delivery System</h3>
@@ -331,7 +346,7 @@
       </div>
     </div>
 
-    <div class="project">
+    <div class="project reveal" style="--delay:.44s" data-delay>
       <div class="project-thumb" style="background-image:url('todo.png')"></div>
       <div class="project-body">
         <h3>To-Do App (React)</h3>
@@ -343,12 +358,13 @@
     </div>
   </div>
 </section>
+
 <!-- CONTACT -->
-<section id="contact" class="container">
+<section id="contact" class="container reveal" style="--delay:.4s" data-delay>
   <div class="section-title">Contact <span>Me</span></div>
   <div class="section-sub">Open to internships & entry-level roles — let’s connect</div>
 
-  <div class="contact-grid">
+  <div class="contact-grid" style="margin-top:18px">
     <div class="contact-left">
       <ul class="contact-list">
         <li><i class="fa-solid fa-envelope"></i> vaishnavrnair1012@gmail.com</li>
@@ -375,51 +391,155 @@
 
 <footer>
   © 2025 Vaishnav R Nair
-  <a class="top" href="#home"><i class="fa-solid fa-arrow-up"></i></a>
+  <a class="top" href="#home" title="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
 </footer>
 
-<!-- ===== JS ===== -->
+<!-- ===== JS: menu, active links, reveal, animate skill bars ===== -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
   // ===== MENU TOGGLE =====
   const menuToggle = document.getElementById('menu-toggle');
   const nav = document.getElementById('nav');
-  menuToggle.addEventListener('click', ()=>{
-    if(nav.style.display === 'flex') nav.style.display = 'none';
-    else {
-      nav.style.display = 'flex';
-      nav.style.flexDirection = 'column';
-      nav.style.position = 'absolute';
-      nav.style.right = '18px';
-      nav.style.top = '66px';
-      nav.style.background = 'rgba(8,12,16,0.9)';
-      nav.style.padding = '10px';
-      nav.style.borderRadius = '8px';
-    }
+  if (menuToggle) {
+    menuToggle.addEventListener('click', ()=>{
+      if(nav.style.display === 'flex') nav.style.display = 'none';
+      else {
+        nav.style.display = 'flex';
+        nav.style.flexDirection = 'column';
+        nav.style.gap = '8px';
+        nav.style.position = 'absolute';
+        nav.style.right = '18px';
+        nav.style.top = '66px';
+        nav.style.background = 'rgba(8,12,16,0.9)';
+        nav.style.padding = '10px';
+        nav.style.borderRadius = '8px';
+      }
+    });
+  }
+
+  // ===== Active nav link on scroll =====
+  const links = document.querySelectorAll('nav a');
+  const sections = document.querySelectorAll('section');
+  function setActiveLink(){
+    let fromTop = window.scrollY + 90;
+    links.forEach(link => {
+      let id = link.getAttribute('href');
+      if(!id || id.charAt(0) !== '#') return;
+      const sec = document.querySelector(id);
+      if(!sec) return;
+      if(sec.offsetTop <= fromTop && sec.offsetTop + sec.offsetHeight > fromTop){
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }
+  window.addEventListener('scroll', setActiveLink);
+  window.addEventListener('load', setActiveLink);
+
+  // ===== Simple reveal animations (staggered) =====
+  const reveals = document.querySelectorAll('.reveal');
+  const revealOnScroll = () => {
+    const triggerBottom = window.innerHeight * 0.85;
+    reveals.forEach((el, i) => {
+      const rect = el.getBoundingClientRect();
+      if(rect.top < triggerBottom){
+        el.style.opacity = 1;
+        el.style.transform = 'translateY(0)';
+        el.style.animation = 'none';
+        // If delay is provided via CSS variable, honor it (already set inline)
+      }
+    });
+  };
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+
+  // ===== Animate skill bars when visible =====
+  const fills = document.querySelectorAll('.fill');
+  const animateFills = () => {
+    fills.forEach((f, idx) => {
+      const rect = f.getBoundingClientRect();
+      if(rect.top < window.innerHeight && f.dataset.animated !== "true"){
+        const width = f.getAttribute('data-fill') || '70%';
+        // small delay per bar for nice stagger
+        setTimeout(() => {
+          f.style.width = width;
+          f.style.transform = 'translateX(0)';
+          f.style.animation = 'none';
+          f.dataset.animated = "true";
+          f.style.transition = 'width 1000ms cubic-bezier(.2,.9,.3,1)';
+        }, idx * 80);
+      }
+    });
+  };
+  window.addEventListener('scroll', animateFills);
+  window.addEventListener('load', animateFills);
+
+  // ===== Smooth percent color update on hover =====
+  document.querySelectorAll('.skill-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      const pct = card.querySelector('.percent');
+      const fill = card.querySelector('.fill');
+      if(pct && fill) {
+        pct.style.color = '#fff';
+        // small width bump on hover
+        fill.style.transform = 'scaleY(1.02)';
+      }
+    });
+    card.addEventListener('mouseleave', () => {
+      const pct = card.querySelector('.percent');
+      const fill = card.querySelector('.fill');
+      if(pct) pct.style.color = 'var(--muted)';
+      if(fill) fill.style.transform = 'scaleY(1)';
+    });
+  });
+
+  // Ensure nav hides on small screens after clicking
+  document.querySelectorAll('nav a').forEach(a=>{
+    a.addEventListener('click', ()=>{ if(window.innerWidth < 900 && nav.style.display === 'flex'){ nav.style.display='none'; } });
   });
 
   // ===== EMAILJS CONTACT FORM =====
-  emailjs.init('mK-Rkxe8hA--Gq8je'); // <-- Replace with your EmailJS public key
+  // Make sure you replace with your actual EmailJS public key / service ID / template ID if desired.
+  if (typeof emailjs !== 'undefined') {
+    try {
+      emailjs.init('Kd7E3NvoJ83_i13XC'); // <-- keep or replace with your EmailJS public key
+    } catch (e) {
+      console.warn('EmailJS init error', e);
+    }
+  }
 
   const contactForm = document.getElementById('contact-form');
-  contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
 
-    const formData = {
-      name: this.name.value,
-      email: this.email.value,
-      subject: this.subject.value,
-      message: this.message.value
-    };
+      const formData = {
+        name: this.name.value,
+        email: this.email.value,
+        subject: this.subject.value,
+        message: this.message.value
+      };
 
-    emailjs.send('service_msofopw', 'template_bfm6ml6', formData)
-      .then(() => {
-        alert('✅ Message sent successfully!');
-        contactForm.reset();
-      }, (error) => {
-        console.error('EmailJS Error:', error);
-        alert('❌ Failed to send message. Please try again.');
-      });
+      // Replace 'service_msofopw' and 'template_bfm6ml6' with your service & template IDs if different.
+      if (typeof emailjs !== 'undefined' && emailjs.send) {
+        emailjs.send('service_9ubuhnt', 'template_jqj3c8q', formData)
+          .then(() => {
+            alert('✅ Message sent successfully!');
+            contactForm.reset();
+          }, (error) => {
+            console.error('EmailJS Error:', error);
+            alert('❌ Failed to send message. Please try again.');
+          });
+      } else {
+        // Fallback message when emailjs library not loaded or blocked
+        alert('⚠️ Email service not available. Make sure EmailJS script is loaded and your public key is set.');
+      }
+    });
+  }
+
+  // small accessibility: focus visible on keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab') document.body.classList.add('show-focus');
   });
 </script>
 </body>
