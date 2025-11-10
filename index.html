@@ -26,8 +26,6 @@
     font-family:'Poppins',sans-serif;
     background:linear-gradient(180deg,var(--bg),#061219 120%);
     color:#e6eef6;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
     scroll-behavior:smooth;
   }
 
@@ -80,54 +78,9 @@
   .photo img{
     width:210px;height:210px;object-fit:cover;border-radius:50%;
     border:4px solid rgba(255,255,255,0.04);box-shadow:0 18px 50px rgba(2,6,12,0.6);
-    transition:transform .45s, box-shadow .35s;
-  }
-  .photo:hover img{transform:translateY(-6px) scale(1.03);box-shadow:0 30px 80px rgba(88,166,255,0.14)}
-  .photo::before{
-    content:"";position:absolute;inset:-12px;border-radius:50%;
-    background:radial-gradient(circle at 30% 25%, rgba(88,166,255,0.12), transparent 20%),
-               radial-gradient(circle at 70% 80%, rgba(88,166,255,0.06), transparent 30%);
-    filter:blur(10px);pointer-events:none;
   }
 
-  /* ===== About ===== */
-  .about .wrap{display:flex;gap:30px;align-items:flex-start;flex-wrap:wrap;justify-content:center}
-  .about-left{flex:1 1 520px;color:var(--muted)}
-  .about-right{flex:0 0 240px;display:flex;flex-direction:column;gap:12px}
-  .stat{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:10px;text-align:center;border:1px solid rgba(255,255,255,0.03)}
-  .stat h3{color:var(--accent);margin-bottom:6px}
-
-  /* ===== Skills: icons + animated bars ===== */
-  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;align-items:start}
-  .skill-card{background:var(--panel);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);display:flex;gap:12px;align-items:center}
-  .skill-icon{
-    width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;
-    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    border:1px solid rgba(255,255,255,0.02);font-size:22px;color:var(--accent);transition:all .3s;
-  }
-  .skill-card:hover .skill-icon{transform:scale(1.06);box-shadow:0 10px 30px rgba(88,166,255,0.08)}
-  .skill-info{flex:1}
-  .skill-info h4{margin:0 0 6px;color:#fff}
-  .bar{height:10px;background:rgba(255,255,255,0.03);border-radius:999px;overflow:hidden}
-  .fill{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#79c0ff);width:0;transform:translateX(-100%);}
-
-  .skill-meta{margin-top:8px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between}
-
-  /* ===== Projects with images ===== */
-  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
-  .project{
-    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.03);transition:transform .3s,box-shadow .3s;
-    display:flex;flex-direction:column;
-  }
-  .project:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(2,6,12,0.6)}
-  .project-thumb{height:160px;background-size:cover;background-position:center;filter:contrast(1) saturate(1);}
-  .project-body{padding:14px}
-  .project-body h3{margin:0 0 8px;color:var(--accent)}
-  .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-  .tag{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:8px;font-size:13px;color:#cfe6ff}
-
-  /* ===== Contact & Footer ===== */
+  /* ===== Contact ===== */
   .contact-grid{display:flex;gap:30px;flex-wrap:wrap;align-items:flex-start;justify-content:center}
   .contact-left{flex:1 1 380px;color:var(--muted)}
   .contact-right{flex:1 1 420px}
@@ -138,30 +91,16 @@
   footer{padding:26px 20px;text-align:center;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02);position:relative}
   .top{position:absolute;right:18px;top:-18px;background:var(--panel);padding:10px;border-radius:8px;color:var(--muted);text-decoration:none}
 
-  /* ===== Animations ===== */
-  @keyframes fillBar { from{ transform:translateX(-100%);} to{transform:translateX(0);} }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
-  .reveal{opacity:0;transform:translateY(20px);animation:fadeUp .7s ease forwards}
-
   /* ===== Responsive ===== */
   @media (max-width:900px){
     nav{display:none}
     #menu-toggle{display:block}
-    header{padding:0 14px}
     section{padding:90px 6%}
-    .home-right{order:-1;flex-basis:100%;display:flex;justify-content:center;margin-bottom:18px}
   }
-  @media (max-width:520px){
-    .name{font-size:2rem}
-    .photo{width:200px;height:200px}
-    .photo img{width:170px;height:170px}
-  }
-
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
   <a class="logo" href="#home">Vaishnav R Nair</a>
   <i id="menu-toggle" class="bx bx-menu"></i>
@@ -176,181 +115,26 @@
 
 <!-- HOME -->
 <section id="home" class="container home">
-  <div class="home-left reveal" style="animation-delay:.1s">
+  <div class="home-left">
     <div class="intro">Hello, It's Me</div>
     <div class="name">Vaishnav R Nair</div>
     <div class="role">Full-Stack Developer</div>
     <p class="bio">
       Software Development Intern at KodNest Technologies. I build robust backend systems with Java and dynamic frontends using React.
-      I enjoy working on ML-integrated apps and mobile solutions.
     </p>
-
     <div class="actions">
-      <a class="btn btn-download" href="VaishnavRNair_Resume.pdf" download ="VaishnavRNair_Resume.pdf"><i class="fa-solid fa-download"></i> Download Resume</a>
+      <a class="btn btn-download" href="VaishnavRNair_Resume.pdf" download="VaishnavRNair_Resume.pdf"><i class="fa-solid fa-download"></i> Download Resume</a>
       <a class="btn btn-ghost" href="#projects">View Projects</a>
-    </div>
-
-    <div class="socials" style="margin-top:14px">
-      <a href="https://github.com/VaishnavRNair" target="_blank"><i class="fa-brands fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/vaishnav-r-nair10/" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vaishnavrnair1012@gmail.com" target="_blank">
-  <i class="fa-solid fa-envelope"></i>
-</a>
-    </div>
-  </div>
-
-  <div class="home-right reveal" style="animation-delay:.2s">
-    <div class="photo">
-      <img src="Btechcertificatepassportsizephoto.jpg" alt="Vaishnav photo">
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="container about reveal" style="animation-delay:.25s">
-  <div class="section-title">About <span>Me</span></div>
-  <div class="section-sub">Full-Stack Developer</div>
-
-  <div class="wrap" style="margin-top:18px">
-    <div class="about-left">
-      <p>
-        Enthusiastic and detail-oriented developer with hands-on experience in Java, MySQL, React, and Django.
-        I led projects including speech recognition and mobile apps, and enjoy building user-focused, maintainable solutions.
-      </p>
-
-      <ul class="about-list" style="margin-top:12px">
-        <li><i class="fa-solid fa-briefcase"></i> Software Intern — KodNest</li>
-        <li><i class="fa-solid fa-graduation-cap"></i> B.Tech (C.S.) — College of Engineering, Trikaripur</li>
-        <li><i class="fa-solid fa-map-marker-dot"></i> Kasaragod, India</li>
-      </ul>
-    </div>
-
-    <div class="about-right">
-      <div class="stat"><h3>3+</h3><div style="color:var(--muted)">Projects</div></div>
-      <div class="stat"><h3>Java</h3><div style="color:var(--muted)">Primary Tech</div></div>
-      <div class="stat"><h3>MySql</h3><div style="color:var(--muted)">Database</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills" class="container reveal" style="animation-delay:.3s">
-  <div class="section-sub"> </div>
-  <div class="section-title">Skills</div>
-  <div class="section-sub">Results-driven developer skilled in </div>
-
-  <div class="skills-grid" style="margin-top:20px">
-    <!-- Java -->
-    <div class="skill-card">
-      <div class="skill-icon"><i class="fa-brands fa-java"></i></div>
-      <div class="skill-info">
-        <h4>Java</h4>
-        <div class="bar"><span class="fill" data-fill="88%"></span></div>
-        <div class="skill-meta"><span>Backend</span><span class="percent">95%</span></div>
-      </div>
-    </div>
-
-    <!-- MySQL -->
-    <div class="skill-card">
-      <div class="skill-icon"><i class="fa-solid fa-database"></i></div>
-      <div class="skill-info">
-        <h4>MySQL</h4>
-        <div class="bar"><span class="fill" data-fill="78%"></span></div>
-        <div class="skill-meta"><span>Databases</span><span class="percent">92%</span></div>
-      </div>
-    </div>
-
-    <!-- Web -->
-    <div class="skill-card">
-      <div class="skill-icon"><i class="fa-brands fa-html5"></i></div>
-      <div class="skill-info">
-        <h4>HTML / CSS / JS</h4>
-        <div class="bar"><span class="fill" data-fill="85%"></span></div>
-        <div class="skill-meta"><span>Frontend Basics</span><span class="percent">90%</span></div>
-      </div>
-    </div>
-
-    <!-- React -->
-    <div class="skill-card">
-      <div class="skill-icon"><i class="fa-brands fa-react"></i></div>
-      <div class="skill-info">
-        <h4>React.js</h4>
-        <div class="bar"><span class="fill" data-fill="82%"></span></div>
-        <div class="skill-meta"><span>Frontend</span><span class="percent">75%</span></div>
-      </div>
-    </div>
-
-    <!-- Django -->
-    <div class="skill-card">
-      <div class="skill-icon"><i class="fa-brands fa-python"></i></div>
-      <div class="skill-info">
-        <h4>Python / Django</h4>
-        <div class="bar"><span class="fill" data-fill="75%"></span></div>
-        <div class="skill-meta"><span>Web</span><span class="percent">75%</span></div>
-      </div>
-    </div>
-
-    <!-- Testing -->
-    <div class="skill-card">
-      <div class="skill-icon"><i class="fa-solid fa-vial"></i></div>
-      <div class="skill-info">
-        <h4>Manual Testing</h4>
-        <div class="bar"><span class="fill" data-fill="70%"></span></div>
-        <div class="skill-meta"><span>QA</span><span class="percent">70%</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects" class="container reveal" style="animation-delay:.35s">
-  <div class="section-sub"> </div>
-  <div class="section-title">Projects</div>
-  <div class="section-sub">From concept to creation</div>
-
-  <div class="projects-grid" style="margin-top:20px">
-    <div class="project">
-      <div class="project-thumb" style="background-image:url('speech.jpeg')"></div>
-      <div class="project-body">
-        <h3>Speech Recognition for Children</h3>
-        <p>Led development of a speech recognition system for children with speech disorders using MFCC & LSTM; integrated into a Django web app for real-time feedback.</p>
-        <div class="tags">
-          <span class="tag">Python</span><span class="tag">Django</span><span class="tag">ML</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="project">
-      <div class="project-thumb" style="background-image:url('fuel.jpg')"></div>
-      <div class="project-body">
-        <h3>Fuel Delivery System</h3>
-        <p>Team lead for an Android app using Firebase; implemented booking, tracking and delivery features with Java & XML.</p>
-        <div class="tags">
-          <span class="tag">Android</span><span class="tag">Firebase</span><span class="tag">Java</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="project">
-      <div class="project-thumb" style="background-image:url('todo.png')"></div>
-      <div class="project-body">
-        <h3>To-Do App (React)</h3>
-        <p>Built a React task manager with add/delete/undo, progress tracking, priority & category features for improved productivity.</p>
-        <div class="tags">
-          <span class="tag">React</span><span class="tag">JS</span><span class="tag">UI</span>
-        </div>
-      </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="container reveal" style="animation-delay:.4s">
-  <div class="section-sub"> </div>
+<section id="contact" class="container">
   <div class="section-title">Contact <span>Me</span></div>
   <div class="section-sub">Open to internships & entry-level roles — let’s connect</div>
 
-  <div class="contact-grid" style="margin-top:18px">
+  <div class="contact-grid">
     <div class="contact-left">
       <ul class="contact-list">
         <li><i class="fa-solid fa-envelope"></i> vaishnavrnair1012@gmail.com</li>
@@ -364,7 +148,7 @@
     </div>
 
     <div class="contact-right">
-      <form class="contact-form" action="#" method="post" style="display:flex;flex-direction:column;gap:10px;background:var(--panel);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)">
+      <form id="contact-form" class="contact-form" action="#" method="post" style="display:flex;flex-direction:column;gap:10px;background:var(--panel);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)">
         <input type="text" name="name" placeholder="Your name" required style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:#e6eef6">
         <input type="email" name="email" placeholder="Your email" required style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:#e6eef6">
         <input type="text" name="subject" placeholder="Subject" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:#e6eef6">
@@ -375,96 +159,55 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   © 2025 Vaishnav R Nair
-  <a class="top" href="#home" title="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+  <a class="top" href="#home"><i class="fa-solid fa-arrow-up"></i></a>
 </footer>
 
-<!-- ===== JS: menu, active links, reveal, animate skill bars ===== -->
+<!-- ===== JS ===== -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
-  // Mobile menu toggle
+  // ===== MENU TOGGLE =====
   const menuToggle = document.getElementById('menu-toggle');
   const nav = document.getElementById('nav');
-  if(menuToggle){
-    menuToggle.addEventListener('click', ()=> {
-      if(nav.style.display === 'flex'){ nav.style.display = 'none'; }
-      else { nav.style.display = 'flex'; nav.style.flexDirection = 'column'; nav.style.gap = '8px'; nav.style.position='absolute'; nav.style.right='18px'; nav.style.top='66px'; nav.style.background='rgba(8,12,16,0.9)'; nav.style.padding='10px'; nav.style.borderRadius='8px'; }
-    });
-  }
-
-  // Active nav link on scroll
-  const links = document.querySelectorAll('nav a');
-  const sections = document.querySelectorAll('section');
-  function setActiveLink(){
-    let fromTop = window.scrollY + 90;
-    links.forEach(link => {
-      let id = link.getAttribute('href');
-      if(!id || id.charAt(0) !== '#') return;
-      const sec = document.querySelector(id);
-      if(!sec) return;
-      if(sec.offsetTop <= fromTop && sec.offsetTop + sec.offsetHeight > fromTop){
-        links.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-      }
-    });
-  }
-  window.addEventListener('scroll', setActiveLink);
-  setActiveLink();
-
-  // Simple reveal animations
-  const reveals = document.querySelectorAll('.reveal');
-  const revealOnScroll = () => {
-    const triggerBottom = window.innerHeight * 0.85;
-    reveals.forEach((el, i) => {
-      const rect = el.getBoundingClientRect();
-      if(rect.top < triggerBottom){
-        el.style.opacity = 1;
-        el.style.transform = 'translateY(0)';
-        el.style.animation = `none`;
-      }
-    });
-  };
-  window.addEventListener('scroll', revealOnScroll);
-  revealOnScroll();
-
-  // Animate skill bars when visible
-  const fills = document.querySelectorAll('.fill');
-  const animateFills = () => {
-    fills.forEach(f => {
-      const rect = f.getBoundingClientRect();
-      if(rect.top < window.innerHeight && f.dataset.animated !== "true"){
-        const width = f.getAttribute('data-fill') || '70%';
-        f.style.width = width;
-        f.style.transform = 'translateX(0)';
-        f.style.animation = 'none';
-        f.dataset.animated = "true";
-        // small CSS-like fill animation via JS
-        f.style.transition = 'width 1000ms cubic-bezier(.2,.9,.3,1)';
-      }
-    });
-  };
-  window.addEventListener('scroll', animateFills);
-  window.addEventListener('load', animateFills);
-
-  // Smooth in-view percent update
-  document.querySelectorAll('.skill-card').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-      const pct = card.querySelector('.percent');
-      const fill = card.querySelector('.fill');
-      if(pct && fill) pct.style.color = '#fff';
-    });
-    card.addEventListener('mouseleave', () => {
-      const pct = card.querySelector('.percent');
-      if(pct) pct.style.color = 'var(--muted)';
-    });
+  menuToggle.addEventListener('click', ()=>{
+    if(nav.style.display === 'flex') nav.style.display = 'none';
+    else {
+      nav.style.display = 'flex';
+      nav.style.flexDirection = 'column';
+      nav.style.position = 'absolute';
+      nav.style.right = '18px';
+      nav.style.top = '66px';
+      nav.style.background = 'rgba(8,12,16,0.9)';
+      nav.style.padding = '10px';
+      nav.style.borderRadius = '8px';
+    }
   });
 
-  // Ensure nav hides on small screens after clicking
-  document.querySelectorAll('nav a').forEach(a=>{
-    a.addEventListener('click', ()=>{ if(window.innerWidth < 900 && nav.style.display === 'flex'){ nav.style.display='none'; } });
+  // ===== EMAILJS CONTACT FORM =====
+  emailjs.init('mK-Rkxe8hA--Gq8je'); // <-- Replace with your EmailJS public key
+
+  const contactForm = document.getElementById('contact-form');
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const formData = {
+      name: this.name.value,
+      email: this.email.value,
+      subject: this.subject.value,
+      message: this.message.value
+    };
+
+    emailjs.send('service_msofopw', 'template_bfm6ml6', formData)
+      .then(() => {
+        alert('✅ Message sent successfully!');
+        contactForm.reset();
+      }, (error) => {
+        console.error('EmailJS Error:', error);
+        alert('❌ Failed to send message. Please try again.');
+      });
   });
 </script>
+
 </body>
 </html>
-
