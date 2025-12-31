@@ -507,6 +507,9 @@
       radial-gradient(circle at 30% 70%, rgba(139,92,246,0.1) 0%, transparent 60%);
     filter:blur(40px);
   }
+  section#projects{
+    margin-bottom:80px;
+  }
   section#contact::before{
     background:
       radial-gradient(circle at 40% 30%, rgba(14,165,233,0.2) 0%, transparent 50%),
@@ -1067,6 +1070,14 @@
     .hero-container{
       grid-template-columns:1fr;
       text-align:center;
+      padding-top:40px;
+    }
+    .hero-container .hero-image{
+      order:-1;
+      margin-bottom:40px;
+    }
+    .hero{
+      padding-top:72px;
     }
     .about-grid{
       grid-template-columns:1fr;
@@ -1382,13 +1393,25 @@
         <span>75%</span>
       </div>
     </div>
+    <div class="skill-card reveal">
+      <div class="skill-header">
+        <div class="skill-icon"><i class="fa-solid fa-database"></i></div>
+        <h4>MongoDB</h4>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-fill" data-width="90"></div>
+      </div>
+      <div class="skill-meta">
+        <span>NoSQL Database</span>
+        <span>90%</span>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- PROJECTS SECTION -->
 <section id="projects" class="container">
   <div class="section-header reveal">
-    <span class="section-label">Portfolio</span>
     <h2>Featured Projects</h2>
     <p>Real-world applications showcasing technical expertise and problem-solving</p>
   </div>
