@@ -1046,6 +1046,47 @@
     transform:translateY(-4px);
     box-shadow:0 6px 20px rgba(37,99,235,0.5);
   }
+  /* WhatsApp Floating Button */
+  .whatsapp-float{
+    position:fixed;
+    bottom:24px;
+    left:24px;
+    width:60px;
+    height:60px;
+    background:linear-gradient(135deg,#25D366,#128C7E);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:28px;
+    text-decoration:none;
+    box-shadow:0 8px 24px rgba(37,211,102,0.4);
+    z-index:1000;
+    transition:all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    animation:pulseWhatsApp 2s ease-in-out infinite;
+  }
+  .whatsapp-float:hover{
+    transform:scale(1.1) translateY(-4px);
+    box-shadow:0 12px 32px rgba(37,211,102,0.6);
+  }
+  @keyframes pulseWhatsApp{
+    0%,100%{
+      box-shadow:0 8px 24px rgba(37,211,102,0.4);
+    }
+    50%{
+      box-shadow:0 8px 24px rgba(37,211,102,0.4), 0 0 0 10px rgba(37,211,102,0.1);
+    }
+  }
+  @media (max-width:640px){
+    .whatsapp-float{
+      width:56px;
+      height:56px;
+      font-size:24px;
+      bottom:20px;
+      left:20px;
+    }
+  }
   /* ===== Popup ===== */
   .popup{
     position:fixed;
@@ -1112,7 +1153,11 @@
   @keyframes fadeInUp{
     0%{
       opacity:0;
-      transform:translateY(30px) scale(0.96);
+      transform:translateY(20px) scale(0.98);
+    }
+    60%{
+      opacity:0.8;
+      transform:translateY(-2px) scale(1);
     }
     100%{
       opacity:1;
@@ -1122,7 +1167,11 @@
   @keyframes fadeInLeft{
     0%{
       opacity:0;
-      transform:translateX(-30px);
+      transform:translateX(-20px);
+    }
+    60%{
+      opacity:0.8;
+      transform:translateX(2px);
     }
     100%{
       opacity:1;
@@ -1132,7 +1181,11 @@
   @keyframes fadeInRight{
     0%{
       opacity:0;
-      transform:translateX(30px);
+      transform:translateX(20px);
+    }
+    60%{
+      opacity:0.8;
+      transform:translateX(-2px);
     }
     100%{
       opacity:1;
@@ -1142,7 +1195,11 @@
   @keyframes scaleIn{
     0%{
       opacity:0;
-      transform:scale(0.9);
+      transform:scale(0.95);
+    }
+    60%{
+      opacity:0.8;
+      transform:scale(1.02);
     }
     100%{
       opacity:1;
@@ -1151,19 +1208,19 @@
   }
   .reveal{
     opacity:0;
-    animation:fadeInUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation:fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
   .reveal-left{
     opacity:0;
-    animation:fadeInLeft 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation:fadeInLeft 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
   .reveal-right{
     opacity:0;
-    animation:fadeInRight 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation:fadeInRight 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
   .reveal-scale{
     opacity:0;
-    animation:scaleIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation:scaleIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 </style>
 </head>
@@ -1225,6 +1282,9 @@
         </a>
         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vaishnavrnair1012@gmail.com" target="_blank" aria-label="Email">
           <i class="fa-solid fa-envelope"></i>
+        </a>
+        <a href="https://wa.me/919746134924" target="_blank" aria-label="WhatsApp">
+          <i class="fa-brands fa-whatsapp"></i>
         </a>
       </div>
     </div>
@@ -1378,84 +1438,6 @@
     </div>
     <div class="skill-card reveal">
       <div class="skill-header">
-        <div class="skill-icon"><i class="fa-brands fa-node-js"></i></div>
-        <h4>Node.js</h4>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-fill" data-width="80"></div>
-      </div>
-      <div class="skill-meta">
-        <span>Backend Runtime</span>
-        <span>80%</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-header">
-        <div class="skill-icon"><i class="fa-brands fa-git-alt"></i></div>
-        <h4>Git</h4>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-fill" data-width="85"></div>
-      </div>
-      <div class="skill-meta">
-        <span>Version Control</span>
-        <span>85%</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-header">
-        <div class="skill-icon"><i class="fa-brands fa-docker"></i></div>
-        <h4>Docker</h4>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-fill" data-width="75"></div>
-      </div>
-      <div class="skill-meta">
-        <span>Containerization</span>
-        <span>75%</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-header">
-        <div class="skill-icon"><i class="fa-brands fa-aws"></i></div>
-        <h4>AWS</h4>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-fill" data-width="70"></div>
-      </div>
-      <div class="skill-meta">
-        <span>Cloud Services</span>
-        <span>70%</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-header">
-        <div class="skill-icon"><i class="fa-brands fa-bootstrap"></i></div>
-        <h4>Bootstrap</h4>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-fill" data-width="82"></div>
-      </div>
-      <div class="skill-meta">
-        <span>CSS Framework</span>
-        <span>82%</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-header">
-        <div class="skill-icon"><i class="fa-brands fa-django"></i></div>
-        <h4>Django</h4>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-fill" data-width="78"></div>
-      </div>
-      <div class="skill-meta">
-        <span>Web Framework</span>
-        <span>78%</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-header">
         <div class="skill-icon"><i class="fa-solid fa-database"></i></div>
         <h4>MySQL</h4>
       </div>
@@ -1473,7 +1455,6 @@
 <!-- PROJECTS SECTION -->
 <section id="projects" class="container">
   <div class="section-header reveal">
-    <span class="section-label">Portfolio</span>
     <h2>Featured Projects</h2>
     <p>Real-world applications showcasing technical expertise and problem-solving</p>
   </div>
@@ -1587,6 +1568,9 @@
         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vaishnavrnair1012@gmail.com" target="_blank" aria-label="Email">
           <i class="fa-solid fa-envelope"></i>
         </a>
+        <a href="https://wa.me/919746134924" target="_blank" aria-label="WhatsApp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
       </div>
     </div>
     <div class="contact-form reveal">
@@ -1630,6 +1614,11 @@
   <i class="fa-solid fa-circle-check"></i>
   <div class="msg" id="popup-text">Message sent successfully!</div>
 </div>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/919746134924" target="_blank" class="whatsapp-float" aria-label="Contact on WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
 
 <!-- SCRIPTS -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -1721,7 +1710,7 @@
         setTimeout(() => {
           entry.target.style.opacity = '1';
           entry.target.style.transform = 'translateY(0) scale(1)';
-          entry.target.style.transition = 'all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+          entry.target.style.transition = 'all 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
         }, index * 100);
         revealObserver.unobserve(entry.target);
       }
@@ -1815,7 +1804,7 @@
         const width = entry.target.dataset.width;
         setTimeout(() => {
           entry.target.style.width = width + '%';
-          entry.target.style.transition = 'width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+          entry.target.style.transition = 'width 1.8s cubic-bezier(0.16, 1, 0.3, 1)';
           entry.target.dataset.animated = 'true';
         }, index * 150);
         skillObserver.unobserve(entry.target);
