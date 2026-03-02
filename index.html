@@ -5,14 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Vaishnav R Nair | Full-Stack Developer Portfolio</title>
 <meta name="description" content="Full-Stack Developer specializing in Java, React, and Machine Learning. Software Development Intern at KodNest Technologies.">
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RWKC2XP6YV"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-RWKC2XP6YV');
-</script>
 <!-- Icons -->
 <link href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -858,20 +850,34 @@
       gap:24px;
     }
   }
-  /* Simple scroll-in animations - GPU friendly */
-  .reveal, .reveal-left, .reveal-right, .reveal-scale{
-    opacity:0;
-    transform:translateY(16px);
-    transition:opacity 0.5s ease, transform 0.5s ease;
+
+  /* ===== Simple, easy-to-explain fade-in animation classes =====
+     - These are CSS-only animations for fading/slide effects.
+     - We use a small JS scroll listener to add the 'visible' class when element is in view.
+     - This is intentionally simple (no IntersectionObserver) so it's easy to explain.
+  */
+  .fade {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 550ms ease, transform 550ms ease;
+    will-change: opacity, transform;
   }
-  .reveal-left{ transform:translateX(-16px); }
-  .reveal-right{ transform:translateX(16px); }
-  .reveal-scale{ transform:translateY(16px) scale(0.98); }
-  .reveal.visible, .reveal-left.visible, .reveal-right.visible, .reveal-scale.visible{
-    opacity:1;
-    transform:translate(0) scale(1);
+  .fade.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
-  /* ===== Minimal professional loader ===== */
+  .fade-scale {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+    transition: opacity 650ms ease, transform 650ms ease;
+    will-change: opacity, transform;
+  }
+  .fade-scale.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* Minimal professional loader */
   .loader-wrapper{
     position:fixed;
     inset:0;
@@ -964,11 +970,12 @@
 <!-- HERO SECTION -->
 <section id="home" class="hero">
   <div class="hero-container">
-    <div class="hero-content reveal">
+    <div class="hero-content fade">
       <h1>Full-Stack Developer</h1>
       <span class="role">Building Scalable Solutions</span>
+      <!-- Updated bio to highlight AI-assisted development (balanced mention) -->
       <p class="bio">
-        Software Development Intern at KodNest Technologies. I specialize in building robust backend systems with Java and dynamic frontends using React. Passionate about creating ML-integrated applications and mobile solutions that solve real-world problems.
+        Software Development Intern at KodNest Technologies. I build robust backends with Java and dynamic frontends with React, and I accelerate development using AI-assisted tools like GitHub Copilot, Cursor AI, and ChatGPT for faster prototyping, better documentation, and improved code quality.
       </p>
       <div class="hero-actions">
         <a href="VaishnavRNair_Resume.pdf" download="Vaishnav_R_Nair_Resume.pdf" class="btn btn-primary">
@@ -1009,7 +1016,7 @@
         </a>
       </div>
     </div>
-    <div class="hero-image reveal-scale">
+    <div class="hero-image fade-scale">
       <div class="photo-wrapper">
         <img src="Btechcertificatepassportsizephoto.jpg" alt="Vaishnav R Nair" class="photo">
       </div>
@@ -1019,18 +1026,19 @@
 
 <!-- ABOUT SECTION -->
 <section id="about" class="container">
-  <div class="section-header reveal">
+  <div class="section-header fade">
     <span class="section-label">About Me</span>
     <h2>Professional Overview</h2>
     <p>Dedicated developer with expertise in full-stack development and machine learning</p>
   </div>
   <div class="about-grid">
-    <div class="about-content reveal">
+    <div class="about-content fade">
+      <!-- Updated about content to include AI tools and experience, balanced mention as requested -->
       <p>
-        I am an enthusiastic and detail-oriented Full-Stack Developer with hands-on experience in Java, MySQL, React, and Django. Currently serving as a Software Development Intern at KodNest Technologies, I specialize in building scalable backend systems and intuitive frontend interfaces.
+        I am an enthusiastic and detail-oriented Full-Stack Developer with hands-on experience in Java, MySQL, React, and Django. Currently serving as a Software Development Intern at KodNest Technologies, I build scalable backend systems and intuitive frontend interfaces.
       </p>
       <p>
-        My experience includes leading projects in speech recognition systems and mobile application development. I enjoy working on ML-integrated applications and am passionate about creating user-focused, maintainable solutions that drive business value.
+        My work frequently integrates machine learning and AI-assisted development. I led a speech recognition project using MFCC and LSTM models and use tools like GitHub Copilot, Cursor AI, and ChatGPT to speed up prototyping, automate repetitive tasks, and improve documentation and testing workflows.
       </p>
       <ul class="about-list">
         <li>
@@ -1063,7 +1071,7 @@
         </li>
       </ul>
     </div>
-    <div class="about-stats reveal">
+    <div class="about-stats fade">
       <div class="stat-card">
         <h3>Java</h3>
         <p>Expertise</p>
@@ -1086,13 +1094,13 @@
 
 <!-- SKILLS SECTION -->
 <section id="skills" class="container">
-  <div class="section-header reveal">
+  <div class="section-header fade">
     <span class="section-label">Technical Skills</span>
     <h2>Technologies & Tools</h2>
     <p>Proficient in modern development stack and best practices</p>
   </div>
   <div class="skills-grid">
-    <div class="skill-card reveal">
+    <div class="skill-card fade">
       <div class="skill-header">
         <div class="skill-icon"><i class="fa-brands fa-java"></i></div>
         <h4>Java</h4>
@@ -1105,7 +1113,7 @@
         <span>95%</span>
       </div>
     </div>
-    <div class="skill-card reveal">
+    <div class="skill-card fade">
       <div class="skill-header">
         <div class="skill-icon"><i class="fa-brands fa-python"></i></div>
         <h4>Python</h4>
@@ -1118,7 +1126,7 @@
         <span>90%</span>
       </div>
     </div>
-    <div class="skill-card reveal">
+    <div class="skill-card fade">
       <div class="skill-header">
         <div class="skill-icon"><i class="fa-solid fa-database"></i></div>
         <h4>SQL</h4>
@@ -1131,7 +1139,7 @@
         <span>92%</span>
       </div>
     </div>
-    <div class="skill-card reveal">
+    <div class="skill-card fade">
       <div class="skill-header">
         <div class="skill-icon"><i class="fa-brands fa-react"></i></div>
         <h4>React.js</h4>
@@ -1144,7 +1152,7 @@
         <span>88%</span>
       </div>
     </div>
-    <div class="skill-card reveal">
+    <div class="skill-card fade">
       <div class="skill-header">
         <div class="skill-icon"><i class="fa-brands fa-html5"></i></div>
         <h4>HTML / CSS / JS</h4>
@@ -1157,7 +1165,7 @@
         <span>85%</span>
       </div>
     </div>
-    <div class="skill-card reveal">
+    <div class="skill-card fade">
       <div class="skill-header">
         <div class="skill-icon"><i class="fa-solid fa-database"></i></div>
         <h4>MySQL</h4>
@@ -1175,19 +1183,20 @@
 
 <!-- PROJECTS SECTION -->
 <section id="projects" class="container">
-  <div class="section-header reveal">
+  <div class="section-header fade">
     <h2>Featured Projects</h2>
     <p>Real-world applications showcasing technical expertise and problem-solving</p>
   </div>
   <div class="projects-grid">
-    <div class="project-card reveal">
+    <div class="project-card fade">
       <div class="project-image">
         <img src="speech.jpeg" alt="Speech Recognition Project" onerror="this.style.display='none'">
       </div>
       <div class="project-content">
         <h3>Speech Recognition for Children</h3>
+        <!-- Updated project description to highlight AI/ML and AI-assisted tooling -->
         <p>
-          Led the development of an advanced speech recognition system designed for children with speech disorders. Implemented MFCC feature extraction and LSTM neural networks for accurate recognition. Integrated the ML model into a Django web application providing real-time feedback and progress tracking.
+          Led the development of an advanced speech recognition system for children with speech disorders. Implemented MFCC feature extraction and LSTM neural networks and integrated the model into a Django app with real-time feedback and progress tracking. Used GitHub Copilot and ChatGPT to speed prototype iterations and improve model integration and documentation.
         </p>
         <div class="project-tags">
           <span class="tag">Python</span>
@@ -1201,14 +1210,14 @@
         </a>
       </div>
     </div>
-    <div class="project-card reveal">
+    <div class="project-card fade">
       <div class="project-image">
         <img src="todo.png" alt="Taskora Project" onerror="this.style.display='none'">
       </div>
       <div class="project-content">
         <h3>Taskora - Task Management App</h3>
         <p>
-          Built a comprehensive React-based task management application with advanced features including add/delete/undo operations, progress tracking, priority management, and category organization. Designed with a focus on user experience and productivity enhancement.
+          Built a React-based task manager with advanced features (undo, progress tracking, priority management). Leveraged Cursor AI and Copilot for UI scaffolding, faster state logic implementation, and to generate unit-test stubs during development.
         </p>
         <div class="project-tags">
           <span class="tag">React</span>
@@ -1222,14 +1231,14 @@
         </a>
       </div>
     </div>
-    <div class="project-card reveal">
+    <div class="project-card fade">
       <div class="project-image">
         <img src="fuel.jpg" alt="Fuel Delivery System" onerror="this.style.display='none'">
       </div>
       <div class="project-content">
         <h3>Fuel Delivery System</h3>
         <p>
-          Served as team lead for an Android application built with Firebase backend. Implemented comprehensive booking system, real-time tracking, and delivery management features using Java and XML. Delivered a complete solution for on-demand fuel delivery services.
+          Team lead for an Android app using Firebase for real-time booking and tracking. Applied AI-assisted tools to speed up UI coding and debugging, and integrated analytics-ready database structures for better product insights.
         </p>
         <div class="project-tags">
           <span class="tag">Android</span>
@@ -1248,13 +1257,13 @@
 
 <!-- CONTACT SECTION -->
 <section id="contact" class="container">
-  <div class="section-header reveal">
+  <div class="section-header fade">
     <span class="section-label">Get In Touch</span>
     <h2>Let's Connect</h2>
     <p>Open to internships, entry-level positions, and collaborative opportunities</p>
   </div>
   <div class="contact-grid">
-    <div class="contact-info reveal">
+    <div class="contact-info fade">
       <h3>Contact Information</h3>
       <ul class="contact-list">
         <li>
@@ -1294,7 +1303,7 @@
         </a>
       </div>
     </div>
-    <div class="contact-form reveal">
+    <div class="contact-form fade">
       <form id="contact-form-element" action="#" method="post">
         <div class="form-group">
           <label for="name">Your Name</label>
@@ -1344,7 +1353,9 @@
 <!-- SCRIPTS -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
+  // -------------------------
   // Loader - minimal delay
+  // -------------------------
   window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
     setTimeout(() => {
@@ -1353,7 +1364,9 @@
     }, 600);
   });
 
+  // -------------------------
   // Download - simple feedback
+  // -------------------------
   const downloadBtn = document.querySelector('a[download]');
   if (downloadBtn) {
     downloadBtn.addEventListener('click', function() {
@@ -1374,7 +1387,9 @@
     });
   }
 
+  // -------------------------
   // Header scroll effect
+  // -------------------------
   const header = document.getElementById('header');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
@@ -1384,7 +1399,9 @@
     }
   });
 
+  // -------------------------
   // Active navigation
+  // -------------------------
   const navLinks = document.querySelectorAll('nav a');
   const sections = document.querySelectorAll('section');
   
@@ -1409,7 +1426,9 @@
   window.addEventListener('scroll', setActiveLink);
   window.addEventListener('load', setActiveLink);
 
-  // Smooth scroll
+  // -------------------------
+  // Smooth scroll for anchor links (keeps header offset)
+  // -------------------------
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
@@ -1426,7 +1445,9 @@
     });
   });
 
+  // -------------------------
   // Mobile menu toggle
+  // -------------------------
   const menuToggle = document.getElementById('menu-toggle');
   const nav = document.getElementById('nav');
   if (menuToggle) {
@@ -1449,76 +1470,82 @@
     });
   }
 
-  // Scroll reveal - add .visible when in view
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
+  // -------------------------
+  // Simple scroll-based reveal (easy to explain)
+  // Replaces IntersectionObserver with a straightforward scroll listener.
+  // We add 'visible' to elements with class 'fade' or 'fade-scale' when
+  // their top is within 85% of the viewport height.
+  // -------------------------
+  function simpleReveal() {
+    const revealElems = document.querySelectorAll('.fade, .fade-scale');
+    const viewportHeight = window.innerHeight;
+    revealElems.forEach(el => {
+      // already visible
+      if (el.classList.contains('visible')) return;
+      const rect = el.getBoundingClientRect();
+      if (rect.top <= viewportHeight * 0.85) {
+        el.classList.add('visible');
       }
     });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  }
 
-  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
-    revealObserver.observe(el);
-  });
+  // Run on load and scroll - intentionally simple and periodic checks are fine for this site.
+  window.addEventListener('load', simpleReveal);
+  window.addEventListener('scroll', simpleReveal);
 
-  // Animated counter for stats
-  const animateCounter = (element, target, duration = 2000) => {
-    let start = 0;
-    const increment = target / (duration / 16);
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= target) {
-        element.textContent = target + (element.textContent.includes('+') ? '+' : '');
-        clearInterval(timer);
-      } else {
-        element.textContent = Math.floor(start) + (element.textContent.includes('+') ? '+' : '');
+  // -------------------------
+  // Animate skill bars when visible (simple logic)
+  // -------------------------
+  function animateSkills() {
+    document.querySelectorAll('.skill-fill').forEach(fill => {
+      if (fill.dataset.animated) return;
+      const rect = fill.getBoundingClientRect();
+      if (rect.top <= window.innerHeight * 0.85) {
+        fill.style.width = (fill.dataset.width || '80') + '%';
+        fill.style.transition = 'width 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
+        fill.dataset.animated = 'true';
       }
-    }, 16);
-  };
+    });
+  }
+  window.addEventListener('load', animateSkills);
+  window.addEventListener('scroll', animateSkills);
 
-  const statObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !entry.target.dataset.animated) {
-        const statValue = entry.target.querySelector('h3');
-        const text = statValue.textContent;
-        const number = parseInt(text);
-        if (!isNaN(number)) {
-          statValue.textContent = '0';
-          animateCounter(statValue, number);
+  // -------------------------
+  // Simple stat number animation
+  // -------------------------
+  function animateStatElements() {
+    document.querySelectorAll('.stat-item, .stat-card').forEach(card => {
+      if (card.dataset.animated) return;
+      const h3 = card.querySelector('h3');
+      if (!h3) return;
+      const rect = card.getBoundingClientRect();
+      if (rect.top <= window.innerHeight * 0.85) {
+        const number = parseInt(h3.textContent) || 0;
+        // run only if number parsed
+        if (number > 0) {
+          let start = 0;
+          const duration = 1200;
+          const step = Math.max(1, Math.floor(number / (duration / 16)));
+          const timer = setInterval(() => {
+            start += step;
+            if (start >= number) {
+              h3.textContent = number;
+              clearInterval(timer);
+            } else {
+              h3.textContent = Math.floor(start);
+            }
+          }, 16);
         }
-        entry.target.dataset.animated = 'true';
-        statObserver.unobserve(entry.target);
+        card.dataset.animated = 'true';
       }
     });
-  }, { threshold: 0.5 });
+  }
+  window.addEventListener('load', animateStatElements);
+  window.addEventListener('scroll', animateStatElements);
 
-  document.querySelectorAll('.stat-card, .stat-item').forEach(stat => {
-    statObserver.observe(stat);
-  });
-
-  // Animate skill bars with stagger effect
-  const skillBars = document.querySelectorAll('.skill-fill');
-  const skillObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting && !entry.target.dataset.animated) {
-        const width = entry.target.dataset.width;
-        setTimeout(() => {
-          entry.target.style.width = width + '%';
-          entry.target.style.transition = 'width 1.8s cubic-bezier(0.16, 1, 0.3, 1)';
-          entry.target.dataset.animated = 'true';
-        }, index * 150);
-        skillObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.3 });
-
-  skillBars.forEach(bar => {
-    skillObserver.observe(bar);
-  });
-
+  // -------------------------
   // Popup function
+  // -------------------------
   function showPopup(message, type = 'success') {
     const popup = document.getElementById('popup');
     const popupText = document.getElementById('popup-text');
@@ -1533,7 +1560,9 @@
     }, 3000);
   }
 
-  // EmailJS form submission
+  // -------------------------
+  // EmailJS form submission (kept exactly as original per your request)
+  // -------------------------
   if (typeof emailjs !== 'undefined') {
     try {
       emailjs.init('Kd7E3NvoJ83_i13XC');
